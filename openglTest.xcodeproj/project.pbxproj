@@ -1,0 +1,275 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5028AAE01E8F1EDE00100DFB /* ZLTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5028AADF1E8F1EDE00100DFB /* ZLTexture.mm */; };
+		5028AAE31E8F1F7500100DFB /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5028AAE21E8F1F7500100DFB /* main.mm */; };
+		5028AAE51E8F225600100DFB /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5028AAE41E8F225600100DFB /* AppKit.framework */; };
+		507D660A1E8AAC37007E82C4 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507D66091E8AAC37007E82C4 /* GLUT.framework */; };
+		507D660C1E8AAE88007E82C4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507D660B1E8AAE88007E82C4 /* OpenGL.framework */; };
+		50A0D6DF1E93499900FFE40F /* ZLParse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A0D6DD1E93499900FFE40F /* ZLParse.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		507D65FA1E8AABD7007E82C4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5028AADE1E8F1EDE00100DFB /* ZLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLTexture.h; sourceTree = "<group>"; };
+		5028AADF1E8F1EDE00100DFB /* ZLTexture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZLTexture.mm; sourceTree = "<group>"; };
+		5028AAE21E8F1F7500100DFB /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		5028AAE41E8F225600100DFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		507D65FC1E8AABD7007E82C4 /* openglTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openglTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		507D66091E8AAC37007E82C4 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		507D660B1E8AAE88007E82C4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		50A0D6D61E93477600FFE40F /* ZLStruct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLStruct.h; sourceTree = "<group>"; };
+		50A0D6DD1E93499900FFE40F /* ZLParse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZLParse.cpp; sourceTree = "<group>"; };
+		50A0D6DE1E93499900FFE40F /* ZLParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLParse.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		507D65F91E8AABD7007E82C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5028AAE51E8F225600100DFB /* AppKit.framework in Frameworks */,
+				507D660C1E8AAE88007E82C4 /* OpenGL.framework in Frameworks */,
+				507D660A1E8AAC37007E82C4 /* GLUT.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		507D65F31E8AABD7007E82C4 = {
+			isa = PBXGroup;
+			children = (
+				5028AAE41E8F225600100DFB /* AppKit.framework */,
+				507D660B1E8AAE88007E82C4 /* OpenGL.framework */,
+				507D66091E8AAC37007E82C4 /* GLUT.framework */,
+				507D65FE1E8AABD7007E82C4 /* openglTest */,
+				507D65FD1E8AABD7007E82C4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		507D65FD1E8AABD7007E82C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				507D65FC1E8AABD7007E82C4 /* openglTest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		507D65FE1E8AABD7007E82C4 /* openglTest */ = {
+			isa = PBXGroup;
+			children = (
+				50A0D6DD1E93499900FFE40F /* ZLParse.cpp */,
+				50A0D6DE1E93499900FFE40F /* ZLParse.h */,
+				5028AADE1E8F1EDE00100DFB /* ZLTexture.h */,
+				5028AADF1E8F1EDE00100DFB /* ZLTexture.mm */,
+				5028AAE21E8F1F7500100DFB /* main.mm */,
+				50A0D6D61E93477600FFE40F /* ZLStruct.h */,
+			);
+			path = openglTest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		507D65FB1E8AABD7007E82C4 /* openglTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 507D66031E8AABD7007E82C4 /* Build configuration list for PBXNativeTarget "openglTest" */;
+			buildPhases = (
+				507D65F81E8AABD7007E82C4 /* Sources */,
+				507D65F91E8AABD7007E82C4 /* Frameworks */,
+				507D65FA1E8AABD7007E82C4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = openglTest;
+			productName = openglTest;
+			productReference = 507D65FC1E8AABD7007E82C4 /* openglTest */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		507D65F41E8AABD7007E82C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = liangzhimy;
+				TargetAttributes = {
+					507D65FB1E8AABD7007E82C4 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 507D65F71E8AABD7007E82C4 /* Build configuration list for PBXProject "openglTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 507D65F31E8AABD7007E82C4;
+			productRefGroup = 507D65FD1E8AABD7007E82C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				507D65FB1E8AABD7007E82C4 /* openglTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		507D65F81E8AABD7007E82C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5028AAE31E8F1F7500100DFB /* main.mm in Sources */,
+				50A0D6DF1E93499900FFE40F /* ZLParse.cpp in Sources */,
+				5028AAE01E8F1EDE00100DFB /* ZLTexture.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		507D66011E8AABD7007E82C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		507D66021E8AABD7007E82C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		507D66041E8AABD7007E82C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		507D66051E8AABD7007E82C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		507D65F71E8AABD7007E82C4 /* Build configuration list for PBXProject "openglTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				507D66011E8AABD7007E82C4 /* Debug */,
+				507D66021E8AABD7007E82C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		507D66031E8AABD7007E82C4 /* Build configuration list for PBXNativeTarget "openglTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				507D66041E8AABD7007E82C4 /* Debug */,
+				507D66051E8AABD7007E82C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 507D65F41E8AABD7007E82C4 /* Project object */;
+}
