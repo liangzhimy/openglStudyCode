@@ -209,12 +209,35 @@ void display() {
     glFlush();
 }
 
+// press keyboard
+void specialKeys(int key, int x, int y) {
+    switch (key) {
+        case GLUT_KEY_UP: {
+            break;
+        }
+        case GLUT_KEY_DOWN: {
+            break;
+        }
+        case GLUT_KEY_LEFT: {
+            break;
+        }
+        case GLUT_KEY_RIGHT: {
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    glutPostRedisplay();
+}
+
 int main(int argc, char * argv[]) {
     parse.Init("/Users/liangzhimy/Documents/work/iOSTest/Demo/openglTest/openglTest/Sphere.obj");
     
     glutInit(&argc, argv);
     glutInitWindowSize(800, 800);
     glutCreateWindow("Demo");
+    glutSpecialFunc(specialKeys);
     glutDisplayFunc(display);
     glutMainLoop();
     return 0;
