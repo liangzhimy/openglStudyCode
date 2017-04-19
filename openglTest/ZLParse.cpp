@@ -4,6 +4,14 @@
 #include <stdio.h>
 #include <cstring>
 #include "ZLParse.h"
+#include <OpenGL/OpenGL.h>
+#include <OpenGL/gl.h>
+
+ZLParse::ZLParse() {
+}
+
+ZLParse::~ZLParse() {
+}
 
 void ZLParse::Init(const char *filePath) {
     std::vector<ZLNumber> points;
@@ -129,4 +137,27 @@ void ZLParse::parsePolyLine(const std::string &line, ZLFaceIndex &face) {
             face.indexs[i - 1] = index;
         }
     }
+}
+
+void ZLParse::Draw() {
+    glPushMatrix();
+    
+    glBegin(GL_TRIANGLES);
+    for (int i = 0; i < objFaces.size(); i++) {
+        ZLFace face = objFaces[i];
+        for (int j = 0; j < 3; j++) {
+            if (face.textures[j].numbers[0] != -1) {
+                glTexCoord3d(face.textures[j].numbers[0], face.textures[j].numbers[1], face.textures[j].numbers[2]);
+            }
+            
+            if (face.normals[j].numbers[0] != -1) {
+                glNormal3d(face.normals[j].numbers[0], face.normals[j].numbers[1], face.normals[j].numbers[2]);
+            }
+            
+            glVertex3d(face.positions[j].numbers[0], face.positions[j].numbers[1], face.positions[j].numbers[2]);
+        }
+    }
+    glEnd();
+    
+    glPopMatrix();
 }

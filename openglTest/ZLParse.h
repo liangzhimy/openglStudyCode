@@ -14,6 +14,8 @@
 #include <vector>
 #include <stdio.h>
 #include <cstring>
+#include <OpenGL/OpenGL.h>
+#include <OpenGL/gl.h>
 
 class ZLParse {
 public:
@@ -25,7 +27,11 @@ private:
     void parsePolyLine(const std::string &line, ZLFaceIndex &face);
     
 public:
+    ZLParse();
+    ~ZLParse();
+    
     void Init(const char *filePath);
+    void Draw();
 };
 
 

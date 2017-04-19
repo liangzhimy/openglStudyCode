@@ -13,83 +13,51 @@
 #include <GLUT/GLUT.h>
 #include "ZLTexture.h"
 #include "ZLParse.h"
+#include "ZLCamera.hpp"
+#include <math.h>
+#include <mach/mach_time.h>
+#include <time.h>
+#include "ZLTextureParse.hpp"
+#include "ZLSkybox.hpp"
+#include "ZLSprite.hpp"
+#include "ZLGround.hpp"
+#include "ZLButton.hpp"
+#include "ZLFBX.hpp"
 
 ZLParse parse;
+ZLCamera camera;
+ZLSkybox skybox;
+uint64_t startTime;
+static mach_timebase_info_data_t  sTimebaseInfo;
+ZLVector3f originalPosition;
+ZLGround ground;
+ZLButton *spriteButton;
+ZLFBXModel fbxModel;
+BOOL shouldRotate = NO;
 
-ZLTexture *__readTexture() {
-    ZLTexture *texture = [[ZLTexture alloc] initWithImagePath:@"/Users/liangzhimy/Documents/work/iOSTest/Demo/openglTest/openglTest/Metal_V1_1012.JPG"];
-    return texture;
-}
-
-void display() {
-    
-    //    CGLContextObj ctx;
-    //    CGLPixelFormatObj pix;
-    //    GLint npix;
-    //
-    //    CGLPixelFormatAttribute attributs[] {
-    //        kCGLPFAOpenGLProfile,
-    ////        kCGLDoubleBufferBit
-    //    };
-    //
-    //    CGLChoosePixelFormat(attributs, &pix, &npix);
-    //    CGLCreateContext(pix, NULL, &npix);
-    //    CGLSetCurrentContext(ctx);
-    
-    
-
+void displayTest() {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glLoadIdentity();
-    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.1, 0.4, 1, 1.0);
+//    glClearColor(0.1, 0.4, 1, 1.0);
     
+    camera.Change3D();
     
-    // -- set matrix
-    //    // 选中投影矩阵
-    //    glMatrixMode(GL_PROJECTION);
-    //    gluPerspective(60.f, 600.f / 600.f, 0.1, 1000.f);
-    //    // 模型视口矩阵
-    //    glMatrixMode(GL_MODELVIEW);
-    //    glLoadIdentity();
+    // update camera
+    uint64_t endTime = mach_absolute_time();
+    uint64_t elapseTime = endTime - startTime;
+    if ( sTimebaseInfo.denom == 0 ) {
+        (void)mach_timebase_info(&sTimebaseInfo);
+    }
+    uint64_t elapsedNano = elapseTime * sTimebaseInfo.numer / sTimebaseInfo.denom;
+    float seconds = (double)elapsedNano / 1000000 / 1000;
+    startTime = mach_absolute_time();
+    camera.Update(seconds);
     
-    // set white color
-    glColor4ub(0, 0, 255, 255);
-    //     start draw someting
-    //    glPointSize(20.0f);
-    //    glBegin(GL_POINTS);
-    //    glVertex3f(-0.5f, 0.f, 0.f);
-    //    glVertex3f(0.f, 0.f, 0.f);
-    //    glVertex3f(0.5f, 0.f, 0.f);
-    //    glEnd();
-    
-    // line
-    //    glLineWidth(8.f);
-    //    glBegin(GL_LINE_LOOP);
-    //    glVertex2f(-0.5, -0.5);
-    //    glColor4ub(255, 0, 255, 255);
-    //    glVertex2f(0, 0.5);
-    //    glColor4ub(255, 0, 0, 255);
-    //    glVertex2f(0.5, -0.5);
-    //    glEnd();
-    
-    //    // 剪裁， 只显示正面， 不绘制2面， 逆时针方向默认是正面， 正时针方面为反面。
-    //    // 当画triangle时逆时针是可以看到的，正时针是看不到的。
-    //    glEnable(GL_CULL_FACE);
-    //    // 指定正时针方向为正面， 这时要按正时针方面画才能被看到。
-    ////    glFrontFace(GL_CW);
-    //    // 线框模式
-    //    glPolygonMode(GL_FRONT, GL_LINE);
-    //
-    //    glLineWidth(2.f);
-    //    // 正时针方向画
-    //    glBegin(GL_TRIANGLES);
-    //    glVertex2d(-0.5, 0);
-    //    glVertex2d(0, .1);
-    //    glVertex2d(0, -.1);
-    //    glEnd();
-    //
-    
-    glEnable(GL_DEPTH_TEST);
-    
+    // update skybox
+    skybox.Draw(camera.position.x, camera.position.y, camera.position.z);
+//    ground.Draw();
+   
+    // 光照
     float blankColor[] = {0.f, 0.f, 0.f, 1.f};
     float whiteColor[] = {1.f, 1.f, 1.f, 1.f};
     float lightPosition[] = {0.f, 1.f, 0.f, 0.f};
@@ -106,139 +74,214 @@ void display() {
     
     glMaterialfv(GL_FRONT, GL_AMBIENT, ambientMat);
     glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseMat);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, blankMat);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, spacularMat);
     glMaterialf(GL_FRONT, GL_SHININESS, 100.f);
     
+    glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
-//
-//    ZLTexture *texture = __readTexture();
-//    glEnable(GL_TEXTURE_2D);
-//    glBindTexture(GL_TEXTURE_2D, texture.textureId);
-//    
-//    
-//    // 逆时针方向画
-//    glColor4ub(255, 0, 0, 255);
-//    glBegin(GL_TRIANGLES);
-//    
-//    glTexCoord2d(0.0f, 0.0f);
-//    glNormal3f(0, 0.1, 0.f);
-//    glVertex3d(0.5, 0, -0.5);
-//    
-//    glNormal3f(0, 0.1, 0.f);
-//    glTexCoord2d(1.0f, 0.0f);
-//    glVertex3d(0.8, 0, -0.5);
-//    
-//    glNormal3f(0, 0.2, 0.f);
-//    glTexCoord2d(0.5f, 0.5f);
-//    glVertex3d(0.65, 0.5, -0.5);
-//    
-//    glEnd();
-    
-    
-    // 图元 4边形
-    //    glBegin(GL_QUADS);
-    //
-    //    glVertex2d(0, .6);
-    //    glVertex2d(.5, .6);
-    //    glVertex2d(.5, .9);
-    //    glVertex2d(0, .9);
-    //
-    //    glEnd();
-    
-    //    glPushMatrix();
-    //
-    ////    glLoadIdentity();
-    //    glScalef(2.0, 1.0, 1.0);
-    //    glTranslatef(0.01, -0.5, 0.f);
-    //    glRotatef(30.f, 0, 0, 1.0f);
-    //    glColor4ub(255.0, 0, 0, 1.0);
-    //    // 图元 多边形
-    //    glBegin(GL_POLYGON);
-    //
-    //    glVertex2d(0, .6);
-    //    glVertex2d(.5, .6);
-    //    glVertex2d(.5, .7);
-    //    glVertex2d(.3, 0.9);
-    //    glVertex2d(0, .9);
-    //    
-    //    glEnd();
-    //    
-    //    glPopMatrix();
-    
-    
-    
-    // load object
-    
     glEnable(GL_CULL_FACE);
-//    glEnable(GL_DEPTH_TEST);
-//    glPolygonMode(GL_FRONT, GL_LINE);
-//    glClearColor(255, 255, 255, 255);
-//    glClear(GL_DEPTH);
+    glEnable(GL_TEXTURE_2D);
+
+    // texture
+    ZLTextureParse *texture = ZLTextureParse::LoadTexture("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/test.bmp");
+    glBindTexture(GL_TEXTURE_2D, texture->textureId);
     
     glPushMatrix();
+    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_COLOR, GL_ONE);
+    glTranslated(0, -2, 0);
+    glRotated(180, 1, 0, 0);
+    parse.Draw();
+    glDisable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+    glPopMatrix();
     
-//    glColor4b(0, 0, 0, 1);
-    glRotated(30, 0, 1, 0);
-    glTranslated(0, 0, -0.01);
-    glScaled(0.5, 0.5, 0.5);
-//    glRotated(10, 1, 0, 0);
+    parse.Draw();
+
+    glPushMatrix();
+    camera.Change2D();
+    glLoadIdentity();
     
-    
-    glBegin(GL_TRIANGLES);
-    for (int i = 0; i < parse.objFaces.size(); i++) {
-        ZLFace face = parse.objFaces[i];
-        for (int j = 0; j < 3; j++) {
-            if (face.textures[j].numbers[0] != -1) {
-                glTexCoord3d(face.textures[j].numbers[0], face.textures[j].numbers[1], face.textures[j].numbers[2]);
-            }
-            
-            if (face.normals[j].numbers[0] != -1) {
-                glNormal3d(face.normals[j].numbers[0], face.normals[j].numbers[1], face.normals[j].numbers[2]);
-            }
-            
-            glVertex3d(face.positions[j].numbers[0], face.positions[j].numbers[1], face.positions[j].numbers[2]);
-//            printf("%f, %f, %f", face.positions[j].numbers[0], face.positions[j].numbers[1], face.positions[j].numbers[2]);
-        }
-//        printf("\n"); 
-    }
-    glEnd();
+    ZLTextureParse *spriteTexture = ZLTextureParse::LoadTexture("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/head.png");
+    ZLSprite sprite;
+    sprite.SetTexture(spriteTexture);
+    spriteButton->SetDeafaultSprite(&sprite);
+    spriteButton->SetRect(-400, 350, 50, 50);
+    spriteButton->setOnClick([]()->void {
+        printf("has onclicked \n ");
+    });
+    spriteButton->Draw();
     
     glPopMatrix();
     
-    glFlush();
+//
+//    float x = camera.viewWidth * .5;
+//    float y = camera.viewHeight * .5;
+//    float z = 0;
+//    
+//    float positions[] = {
+//        -x, -y, z,
+//        0, -y, z,
+//        0, 0, z,
+//        -x, 0, z
+//    };
+//    
+//    float texcoords[] = {
+//       0, 0,
+//       1, 0,
+//       1, 1,
+//       0, 1
+//    };
+//    
+//    glEnableClientState(GL_VERTEX_ARRAY);
+//    glVertexPointer(3.0, GL_FLOAT, 0, positions);
+//    
+//    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+//    glTexCoordPointer(2, GL_FLOAT, 0, texcoords);
+//    
+//    glDrawArrays(GL_QUADS, 0, 4);
+    
+    glutSwapBuffers();
+    glutPostRedisplay();
 }
 
 // press keyboard
 void specialKeys(int key, int x, int y) {
     switch (key) {
-        case GLUT_KEY_UP: {
-            break;
-        }
-        case GLUT_KEY_DOWN: {
-            break;
-        }
         case GLUT_KEY_LEFT: {
+            camera.moveRight = NO;
+            camera.moveForward = NO;
+            camera.moveBackward = NO;
+            camera.moveLeft = YES;
             break;
         }
         case GLUT_KEY_RIGHT: {
+            camera.moveLeft = NO;
+            camera.moveForward = NO;
+            camera.moveBackward = NO;
+            camera.moveRight = YES;
+            break;
+        }
+        case GLUT_KEY_UP: {
+            camera.moveLeft = NO;
+            camera.moveRight = NO;
+            camera.moveBackward = NO;
+            camera.moveForward = YES;
+            break;
+        }
+        case GLUT_KEY_DOWN: {
+            camera.moveLeft = NO;
+            camera.moveRight = NO;
+            camera.moveForward = NO;
+            camera.moveBackward = YES;
             break;
         }
         default: {
+            camera.moveLeft = NO;
+            camera.moveRight = NO;
+            camera.moveForward = NO;
+            camera.moveBackward = NO;
             break;
         }
     }
     glutPostRedisplay();
 }
 
-int main(int argc, char * argv[]) {
-    parse.Init("/Users/liangzhimy/Documents/work/iOSTest/Demo/openglTest/openglTest/Sphere.obj");
+void mouseState(int button, int state, int x, int y) {
+    switch (state) {
+        case GLUT_DOWN: {
+            originalPosition = ZLVector3f(x, y, 0);
+            shouldRotate = YES;
+            glutSetCursor(GLUT_CURSOR_NONE);
+            
+            int modelX =  x - camera.viewWidth * .5;
+            int modelY = camera.viewHeight * .5 - y;
+            spriteButton->OnTouchBegin(modelX, modelY);
+            
+            break;
+        }
+        case GLUT_UP: {
+            shouldRotate = NO;
+            glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
+            glutWarpPointer(originalPosition.x, originalPosition.y);
+            
+            int modelX =  x - camera.viewWidth * .5;
+            int modelY = camera.viewHeight * .5 - y;
+            spriteButton->OnTouchEnd(modelX, modelY);
+            
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+void rotate(GLdouble deltaX, GLdouble deltaY) {
+    float rotatePitchAngle = deltaY / 100;
+    camera.Pitch(rotatePitchAngle);
+    float rotateYawAngle = deltaX / 100;
+    camera.Yaw(rotateYawAngle);
+}
+
+void mouseMove(int x, int y) {
+    if (!shouldRotate) {
+        return;
+    }
     
+    static int lastX = -1, lastY = -1;
+    GLdouble deltaX, deltaY;
+    deltaX = x - lastX;
+    deltaY = y - lastY;
+    
+    if (deltaX < 0) {
+        deltaX = -1;
+    } else if (deltaX > 0) {
+        deltaX = 1;
+    }
+    
+    if (deltaY < 0) {
+        deltaY = -1;
+    } else if (deltaY > 0) {
+        deltaY = 1;
+    } 
+    
+    // do some thing
+    rotate(deltaX, deltaY);
+    
+    lastX = x;
+    lastY = y;
+    glutPostRedisplay();
+}
+
+void changeSize(int w, int h) {
+    skybox.Init("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/skybox");
+    ground.Init();
+    fbxModel.Init("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/cube.fbx");
+    camera.viewWidth = w;
+    camera.viewHeight = h;
+    camera.Change3D();
+}
+
+int main(int argc, char * argv[]) {
+    //    __readTexture();
+    startTime = mach_absolute_time();
+    parse.Init("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/Sphere.obj");
+    spriteButton = new ZLButton();
+   
     glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
     glutInitWindowSize(800, 800);
     glutCreateWindow("Demo");
     glutSpecialFunc(specialKeys);
-    glutDisplayFunc(display);
+    glutReshapeFunc(changeSize);
+    glutMouseFunc(mouseState);
+    glutMotionFunc(mouseMove);
+    glutDisplayFunc(displayTest);
     glutMainLoop();
+    
+    delete spriteButton;
+    
     return 0;
 }
