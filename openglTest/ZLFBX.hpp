@@ -16,6 +16,7 @@
 #include <unordered_map>
 #include "ZLVector3f.hpp"
 #include "ZLTexture.hpp"
+#include "ZLStruct.h"
 
 typedef enum : int {
     ZLMeterailTypeUnknow,
@@ -34,8 +35,8 @@ private:
     std::string getMaterialPath(const char *path);
     
 protected:
-    
-    std::vector<std::vector<int>> indices; 
+    std::vector<ZLFace> *vertices;
+    std::vector<std::vector<int>> indices;
     
     void importPositons(FbxMesh *mesh, std::vector<ZLVector3f> &positions);
     void importNode(FbxNode *fbxNode);

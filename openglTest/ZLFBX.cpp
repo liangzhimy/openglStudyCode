@@ -27,8 +27,19 @@ void ZLFBXModel::importMesh(FbxMesh *mesh) {
     mesh->GetUVSetNames(uvNameList);
     
     int polygonCont = mesh->GetPolygonCount();
+    
+    int polygonIndexCount = 0;
+    for (int i = 0; i < polygonCont; i++) {
+        polygonIndexCount += mesh->GetPolygonSize(i);
+        
+    }
+    
+    vertices = new std::vector<ZLFace>(polygonIndexCount);
+    
     for (int i = 0; i < polygonCont; i++) {
         int polygonSize = mesh->GetPolygonSize(i);
+        ZLFace face = ZLFace();
+        
         for (int j = 0; j < polygonSize; j++) {
             // vector
             int index = mesh->GetPolygonVertex(i, j);
@@ -116,10 +127,9 @@ void ZLFBXModel::importNode(FbxNode *node) {
     printf("decode %s \n", node->GetName());
     if (node->GetMesh()) {
         printf("decode mesh of %s\n", node->GetName());
+        importMaterial(node);
         importMesh(node->GetMesh());
     }
-    
-    importMaterial(node);
     
     int childNodeCount = node->GetChildCount();
     for (int i = 0; i < childNodeCount; i++) {
