@@ -8,7 +8,7 @@
 
 #include "ZLSprite.hpp"
 
-void ZLSprite::SetTexture(ZLTextureParse *texture) {
+void ZLSprite::SetTexture(ZLTexture *texture) {
     myTexture = texture;
 }
 

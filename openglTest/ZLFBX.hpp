@@ -11,14 +11,42 @@
 
 #include <stdio.h>
 #include <fbxsdk.h>
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include "ZLVector3f.hpp"
+#include "ZLTexture.hpp"
+
+typedef enum : int {
+    ZLMeterailTypeUnknow,
+    ZLMeterailTypePhong,
+    ZLMeterailTypeLambert,
+} ZLMeterailType;
+
+struct ZLMat {
+    ZLMeterailType type;
+    std::string diffuseColorTexture;
+    ZLTexture *texture; 
+};
 
 class ZLFBXModel {
+private:
+    std::string getMaterialPath(const char *path);
+    
 protected:
-    void ImportNode(FbxNode *fbxNode);
+    
+    std::vector<std::vector<int>> indices; 
+    
+    void importPositons(FbxMesh *mesh, std::vector<ZLVector3f> &positions);
+    void importNode(FbxNode *fbxNode);
     void importMaterial(FbxNode *node);
-    void importMesh(FbxNode *mesh);
+    void importMesh(FbxMesh *mesh);
     
 public:
+    std::string fbxPath;
+    std::vector<ZLMat *> materials;
+    std::unordered_map<int, int> materialIndexs;
+    
     void Init(const char *filePath);
     void Draw(); 
 };

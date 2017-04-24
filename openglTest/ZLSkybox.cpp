@@ -12,22 +12,22 @@ void ZLSkybox::Init(const char *path) {
     char temp[128] = {0};
     strcpy(temp, path);
     strcat(temp, "/front.bmp");
-    front = ZLTextureParse::LoadTexture(temp);
+    front = ZLTexture::LoadTexture(temp);
     strcpy(temp, path);
     strcat(temp, "/back.bmp");
-    back = ZLTextureParse::LoadTexture(temp);
+    back = ZLTexture::LoadTexture(temp);
     strcpy(temp, path);
     strcat(temp, "/top.bmp");
-    top = ZLTextureParse::LoadTexture(temp);
+    top = ZLTexture::LoadTexture(temp);
     strcpy(temp, path);
     strcat(temp, "/bottom.bmp");
-    bottom = ZLTextureParse::LoadTexture(temp);
+    bottom = ZLTexture::LoadTexture(temp);
     strcpy(temp, path);
     strcat(temp, "/left.bmp");
-    left = ZLTextureParse::LoadTexture(temp);
+    left = ZLTexture::LoadTexture(temp);
     strcpy(temp, path);
     strcat(temp, "/right.bmp");
-    right = ZLTextureParse::LoadTexture(temp);
+    right = ZLTexture::LoadTexture(temp);
     displaylist.Init([&]()->void {
         glColor4ub(255, 255, 255, 255);
         

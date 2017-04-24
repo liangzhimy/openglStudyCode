@@ -11,29 +11,32 @@
 #include <OpenGL/OpenGL.h>
 #include "main.hpp"
 #include <GLUT/GLUT.h>
-#include "ZLTexture.h"
 #include "ZLParse.h"
 #include "ZLCamera.hpp"
 #include <math.h>
 #include <mach/mach_time.h>
 #include <time.h>
-#include "ZLTextureParse.hpp"
+#include "ZLTexture.hpp"
 #include "ZLSkybox.hpp"
 #include "ZLSprite.hpp"
 #include "ZLGround.hpp"
 #include "ZLButton.hpp"
 #include "ZLFBX.hpp"
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
+#include <mach/mach_time.h>
+
 
 ZLParse parse;
 ZLCamera camera;
 ZLSkybox skybox;
 uint64_t startTime;
-static mach_timebase_info_data_t  sTimebaseInfo;
+static mach_timebase_info_data_t sTimebaseInfo;
 ZLVector3f originalPosition;
 ZLGround ground;
 ZLButton *spriteButton;
 ZLFBXModel fbxModel;
-BOOL shouldRotate = NO;
+bool shouldRotate = false;
 
 void displayTest() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -45,11 +48,11 @@ void displayTest() {
     // update camera
     uint64_t endTime = mach_absolute_time();
     uint64_t elapseTime = endTime - startTime;
-    if ( sTimebaseInfo.denom == 0 ) {
+    if (sTimebaseInfo.denom == 0) {
         (void)mach_timebase_info(&sTimebaseInfo);
     }
-    uint64_t elapsedNano = elapseTime * sTimebaseInfo.numer / sTimebaseInfo.denom;
-    float seconds = (double)elapsedNano / 1000000 / 1000;
+    uint64_t elapsedNafalse = elapseTime * sTimebaseInfo.numer / sTimebaseInfo.denom;
+    float seconds = (double)elapsedNafalse / 1000000 / 1000;
     startTime = mach_absolute_time();
     camera.Update(seconds);
     
@@ -84,7 +87,7 @@ void displayTest() {
     glEnable(GL_TEXTURE_2D);
 
     // texture
-    ZLTextureParse *texture = ZLTextureParse::LoadTexture("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/test.bmp");
+    ZLTexture *texture = ZLTexture::LoadTexture("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/test.bmp");
     glBindTexture(GL_TEXTURE_2D, texture->textureId);
     
     glPushMatrix();
@@ -104,7 +107,7 @@ void displayTest() {
     camera.Change2D();
     glLoadIdentity();
     
-    ZLTextureParse *spriteTexture = ZLTextureParse::LoadTexture("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/head.png");
+    ZLTexture *spriteTexture = ZLTexture::LoadTexture("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/head.png");
     ZLSprite sprite;
     sprite.SetTexture(spriteTexture);
     spriteButton->SetDeafaultSprite(&sprite);
@@ -151,38 +154,38 @@ void displayTest() {
 void specialKeys(int key, int x, int y) {
     switch (key) {
         case GLUT_KEY_LEFT: {
-            camera.moveRight = NO;
-            camera.moveForward = NO;
-            camera.moveBackward = NO;
+            camera.moveRight = false;
+            camera.moveForward = false;
+            camera.moveBackward = false;
             camera.moveLeft = YES;
             break;
         }
         case GLUT_KEY_RIGHT: {
-            camera.moveLeft = NO;
-            camera.moveForward = NO;
-            camera.moveBackward = NO;
+            camera.moveLeft = false;
+            camera.moveForward = false;
+            camera.moveBackward = false;
             camera.moveRight = YES;
             break;
         }
         case GLUT_KEY_UP: {
-            camera.moveLeft = NO;
-            camera.moveRight = NO;
-            camera.moveBackward = NO;
+            camera.moveLeft = false;
+            camera.moveRight = false;
+            camera.moveBackward = false;
             camera.moveForward = YES;
             break;
         }
         case GLUT_KEY_DOWN: {
-            camera.moveLeft = NO;
-            camera.moveRight = NO;
-            camera.moveForward = NO;
+            camera.moveLeft = false;
+            camera.moveRight = false;
+            camera.moveForward = false;
             camera.moveBackward = YES;
             break;
         }
         default: {
-            camera.moveLeft = NO;
-            camera.moveRight = NO;
-            camera.moveForward = NO;
-            camera.moveBackward = NO;
+            camera.moveLeft = false;
+            camera.moveRight = false;
+            camera.moveForward = false;
+            camera.moveBackward = false;
             break;
         }
     }
@@ -193,7 +196,7 @@ void mouseState(int button, int state, int x, int y) {
     switch (state) {
         case GLUT_DOWN: {
             originalPosition = ZLVector3f(x, y, 0);
-            shouldRotate = YES;
+            shouldRotate = true;
             glutSetCursor(GLUT_CURSOR_NONE);
             
             int modelX =  x - camera.viewWidth * .5;
@@ -203,7 +206,7 @@ void mouseState(int button, int state, int x, int y) {
             break;
         }
         case GLUT_UP: {
-            shouldRotate = NO;
+            shouldRotate = false;
             glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
             glutWarpPointer(originalPosition.x, originalPosition.y);
             
@@ -258,7 +261,7 @@ void mouseMove(int x, int y) {
 void changeSize(int w, int h) {
     skybox.Init("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/skybox");
     ground.Init();
-    fbxModel.Init("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/cube.fbx");
+    fbxModel.Init("/Users/liangzhimy/Desktop/OpenGL/openglTest/openglTest/res/tauren.fbx");
     camera.viewWidth = w;
     camera.viewHeight = h;
     camera.Change3D();

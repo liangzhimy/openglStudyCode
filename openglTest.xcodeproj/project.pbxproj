@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5028AAE01E8F1EDE00100DFB /* ZLTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5028AADF1E8F1EDE00100DFB /* ZLTexture.mm */; };
 		5028AAE31E8F1F7500100DFB /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5028AAE21E8F1F7500100DFB /* main.mm */; };
 		5028AAE51E8F225600100DFB /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5028AAE41E8F225600100DFB /* AppKit.framework */; };
 		5071BDC81E9A755900F30210 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5071BDC71E9A755900F30210 /* SDL2.framework */; };
 		5071BDCA1E9A756400F30210 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5071BDC91E9A756400F30210 /* SDL2_image.framework */; };
-		5071BDCD1E9A778200F30210 /* ZLTextureParse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5071BDCB1E9A778200F30210 /* ZLTextureParse.cpp */; };
 		5071BDDF1E9B008100F30210 /* ZLSkybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5071BDDD1E9B008100F30210 /* ZLSkybox.cpp */; };
 		5071BDE21E9C364B00F30210 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 5071BDCF1E9AFA6E00F30210 /* image_DXT.c */; };
 		5071BDE31E9C364B00F30210 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 5071BDD11E9AFA6E00F30210 /* image_helper.c */; };
@@ -26,12 +24,13 @@
 		5071BDFC1EA584F900F30210 /* ZLParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5071BDFA1EA584F900F30210 /* ZLParticle.cpp */; };
 		5071BE021EA585C400F30210 /* ZLUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5071BE001EA585C400F30210 /* ZLUtility.cpp */; };
 		5071BE051EA6D75800F30210 /* ZLFBX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5071BE031EA6D75800F30210 /* ZLFBX.cpp */; };
-		5071BF111EA7B77500F30210 /* libfbxsdk-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5071BF101EA7B77500F30210 /* libfbxsdk-static.a */; };
 		507D660A1E8AAC37007E82C4 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507D66091E8AAC37007E82C4 /* GLUT.framework */; };
 		507D660C1E8AAE88007E82C4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507D660B1E8AAE88007E82C4 /* OpenGL.framework */; };
 		50A0D6DF1E93499900FFE40F /* ZLParse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A0D6DD1E93499900FFE40F /* ZLParse.cpp */; };
 		50A0D6E21E95ADBF00FFE40F /* ZLVector3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A0D6E01E95ADBF00FFE40F /* ZLVector3f.cpp */; };
 		50A0D6E51E95AE5500FFE40F /* ZLCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A0D6E31E95AE5500FFE40F /* ZLCamera.cpp */; };
+		50A4D37F1EAAD04F0061690E /* libfbxsdk-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A4D37E1EAAD04F0061690E /* libfbxsdk-static.a */; };
+		50A4D3821EAAFAA60061690E /* ZLTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A4D3801EAAFAA60061690E /* ZLTexture.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,14 +46,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5028AADE1E8F1EDE00100DFB /* ZLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLTexture.h; sourceTree = "<group>"; };
-		5028AADF1E8F1EDE00100DFB /* ZLTexture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZLTexture.mm; sourceTree = "<group>"; };
 		5028AAE21E8F1F7500100DFB /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		5028AAE41E8F225600100DFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5071BDC71E9A755900F30210 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		5071BDC91E9A756400F30210 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
-		5071BDCB1E9A778200F30210 /* ZLTextureParse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZLTextureParse.cpp; sourceTree = "<group>"; };
-		5071BDCC1E9A778200F30210 /* ZLTextureParse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZLTextureParse.hpp; sourceTree = "<group>"; };
 		5071BDCF1E9AFA6E00F30210 /* image_DXT.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = image_DXT.c; sourceTree = "<group>"; };
 		5071BDD01E9AFA6E00F30210 /* image_DXT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = image_DXT.h; sourceTree = "<group>"; };
 		5071BDD11E9AFA6E00F30210 /* image_helper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = image_helper.c; sourceTree = "<group>"; };
@@ -85,7 +80,6 @@
 		5071BE011EA585C400F30210 /* ZLUtility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZLUtility.hpp; sourceTree = "<group>"; };
 		5071BE031EA6D75800F30210 /* ZLFBX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZLFBX.cpp; sourceTree = "<group>"; };
 		5071BE041EA6D75800F30210 /* ZLFBX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZLFBX.hpp; sourceTree = "<group>"; };
-		5071BF101EA7B77500F30210 /* libfbxsdk-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libfbxsdk-static.a"; path = "../../../../Downloads/Simple OpenGL Image Library/src/libfbxsdk-static.a"; sourceTree = "<group>"; };
 		507D65FC1E8AABD7007E82C4 /* openglTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openglTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		507D66091E8AAC37007E82C4 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		507D660B1E8AAE88007E82C4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -96,6 +90,9 @@
 		50A0D6E11E95ADBF00FFE40F /* ZLVector3f.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZLVector3f.hpp; sourceTree = "<group>"; };
 		50A0D6E31E95AE5500FFE40F /* ZLCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZLCamera.cpp; sourceTree = "<group>"; };
 		50A0D6E41E95AE5500FFE40F /* ZLCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZLCamera.hpp; sourceTree = "<group>"; };
+		50A4D37E1EAAD04F0061690E /* libfbxsdk-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libfbxsdk-static.a"; sourceTree = "<group>"; };
+		50A4D3801EAAFAA60061690E /* ZLTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZLTexture.cpp; sourceTree = "<group>"; };
+		50A4D3811EAAFAA60061690E /* ZLTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZLTexture.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +103,7 @@
 				5071BDCA1E9A756400F30210 /* SDL2_image.framework in Frameworks */,
 				5071BDC81E9A755900F30210 /* SDL2.framework in Frameworks */,
 				5028AAE51E8F225600100DFB /* AppKit.framework in Frameworks */,
-				5071BF111EA7B77500F30210 /* libfbxsdk-static.a in Frameworks */,
+				50A4D37F1EAAD04F0061690E /* libfbxsdk-static.a in Frameworks */,
 				507D660C1E8AAE88007E82C4 /* OpenGL.framework in Frameworks */,
 				507D660A1E8AAC37007E82C4 /* GLUT.framework in Frameworks */,
 			);
@@ -158,14 +155,12 @@
 		507D65FE1E8AABD7007E82C4 /* openglTest */ = {
 			isa = PBXGroup;
 			children = (
-				5071BF101EA7B77500F30210 /* libfbxsdk-static.a */,
 				5071BDCE1E9AFA6E00F30210 /* src */,
-				5071BDCB1E9A778200F30210 /* ZLTextureParse.cpp */,
-				5071BDCC1E9A778200F30210 /* ZLTextureParse.hpp */,
+				50A4D37E1EAAD04F0061690E /* libfbxsdk-static.a */,
 				50A0D6DD1E93499900FFE40F /* ZLParse.cpp */,
 				50A0D6DE1E93499900FFE40F /* ZLParse.h */,
-				5028AADE1E8F1EDE00100DFB /* ZLTexture.h */,
-				5028AADF1E8F1EDE00100DFB /* ZLTexture.mm */,
+				50A4D3801EAAFAA60061690E /* ZLTexture.cpp */,
+				50A4D3811EAAFAA60061690E /* ZLTexture.hpp */,
 				5071BDF71EA2FE9200F30210 /* ZLFoundation.cpp */,
 				5071BDF81EA2FE9200F30210 /* ZLFoundation.hpp */,
 				5028AAE21E8F1F7500100DFB /* main.mm */,
@@ -256,6 +251,7 @@
 				5071BDED1E9EEC2000F30210 /* ZLSprite.cpp in Sources */,
 				5071BDE31E9C364B00F30210 /* image_helper.c in Sources */,
 				5071BDEA1E9D2E6B00F30210 /* ZLDisplaylist.cpp in Sources */,
+				50A4D3821EAAFAA60061690E /* ZLTexture.cpp in Sources */,
 				5071BDF41EA2ECA800F30210 /* ZLButton.cpp in Sources */,
 				5071BDE61E9C364B00F30210 /* SOIL.c in Sources */,
 				5071BDE71E9C364B00F30210 /* stb_image_aug.c in Sources */,
@@ -265,11 +261,9 @@
 				50A0D6E51E95AE5500FFE40F /* ZLCamera.cpp in Sources */,
 				5071BE051EA6D75800F30210 /* ZLFBX.cpp in Sources */,
 				50A0D6E21E95ADBF00FFE40F /* ZLVector3f.cpp in Sources */,
-				5071BDCD1E9A778200F30210 /* ZLTextureParse.cpp in Sources */,
 				50A0D6DF1E93499900FFE40F /* ZLParse.cpp in Sources */,
 				5071BDDF1E9B008100F30210 /* ZLSkybox.cpp in Sources */,
 				5071BDF91EA2FE9200F30210 /* ZLFoundation.cpp in Sources */,
-				5028AAE01E8F1EDE00100DFB /* ZLTexture.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,8 +363,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Applications/Autodesk/FBX,
-					SDK/2016.1.1/lib/clang/release,
 					"$(PROJECT_DIR)/openglTest",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -390,8 +382,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Applications/Autodesk/FBX,
-					SDK/2016.1.1/lib/clang/release,
 					"$(PROJECT_DIR)/openglTest",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;

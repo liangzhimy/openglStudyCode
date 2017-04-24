@@ -10,18 +10,18 @@
 #define ZLSprite_hpp
 
 #include <stdio.h>
-#include "ZLTextureParse.hpp"
+#include "ZLTexture.hpp"
 #include "ZLVector3f.hpp"
 #include "ZLList.h"
 
 class ZLSprite : public ZLList {
     
 private:
-    ZLTextureParse *myTexture;
+    ZLTexture *myTexture;
     ZLVector3f mash[4];
     
 public:
-    void SetTexture(ZLTextureParse *texture);
+    void SetTexture(ZLTexture *texture);
     void SetRect(float x, float y, float width, float height);
     void Draw();
     

@@ -11,14 +11,14 @@
 
 #include <stdio.h>
 #include <OpenGL/OpenGL.h>
-#include "ZLTextureParse.hpp"
+#include "ZLTexture.hpp"
 #include "ZLDisplaylist.hpp"
 
 class ZLSkybox {
 private:
     ZLDisplaylist displaylist;
 public:
-    ZLTextureParse *front, *back, *right, *left, *top, *bottom;
+    ZLTexture *front, *back, *right, *left, *top, *bottom;
     void Init(const char *path);
     void Draw(float x, float y, float z);
 };
